@@ -155,7 +155,7 @@ after GIT repo URL.
 
 **SCREENCAST LINK:**
 
-- [Link](https://youtu.be/hCL2wHVY--o)
+- [Link](https://www.youtube.com/watch?v=cLosIsUbvb0)
 
 Tool used: QuickTime Player
 ___
