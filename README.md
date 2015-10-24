@@ -26,7 +26,7 @@ hamcrest.jar to be able to use randoop and maven.
 **TASKS**
 
 + Task 1: Unit Tests and Coverage
-- On local machine:
+    - On local machine:
 ```
 Edit pom.xml of the repo to include cobertura plugin for coverage report generation.
 Running mvn test 
@@ -34,8 +34,7 @@ Running git commit and push
 ```
 
 This triggers a build on jenkins. If build succeeds, coverage report is generated.
-
-- On Jenkins:
+    - On Jenkins:
 ```
 On the machine running Jenkins, install git, maven and openjdk1.8
 Install plugins: git, maven-integration, cobertura and findbugs
@@ -49,11 +48,11 @@ Manage Jenkins-> Configure systems -> maven installations -> add â€œmaven 3.0.3â
 ```
 
 Screenshot:
-![alt text](./screenshots/Base_graph.png "base")
+![alt text](/screenshots/Base_graph.png "base")
 
 
 + Task 2: Advanced Testing Technique: Using Randoop
-- On local machine:
+    - On local machine:
 ```
 Edit pom.xml of the repo to include the following: 
 - Add randoop dependency
@@ -64,7 +63,7 @@ Running git commit and push
 ```
 This triggers a build on jenkins. If build succeeds, coverage report is generated.
 
-- On Jenkins:
+    - On Jenkins:
 ```
 Create a Job: RandoopJob with respective configurations
 (Note: config.xml file included in this repo)
@@ -72,7 +71,7 @@ Create a Job: RandoopJob with respective configurations
 ```
 
 Screenshot:
-![alt text](./Randoop_graph.png "randoop")
+![alt text](/screenshots/Randoop_graph.png "randoop")
 
 
 ### ANALYSIS SECTION
@@ -85,7 +84,7 @@ We are using Findbugs to perform static analysis of the code.
 ```
 
 Screenshot:
-![alt text](./findbugs.png "findbugs")
+![alt text](./screenshots/findbugs.png "findbugs")
 
 
 + Task 4: Extended Analysis:
@@ -123,6 +122,26 @@ For this, we have written python scripts which will check for a .pem file in the
 We are running these scripts via pre-commit hook. If the security gate is violated, the commit is rejected.
 In the following screenshots, the 'git status' command shows no change before and after the 'git commit' command, because our pre-commit hook rejected the commit due to violation of security gate.
 
+Pre-commit hook:
+```
+#!/bin/bash
+
+for f in src/main/java/org/apache/commons/csv/*.java
+do 
+    python token.py $f
+    if [ "$?" = "1" ]
+    then
+        exit 1
+    fi
+done
+
+python checkfile.py ./
+```
+
+Screenshots:
+![alt text](./screenshots/security_gate1.png "sec1")
+
+![alt text](./screenshots/security_gate2.png "sec2")
 
 **Notes:**
 We have also added email notification as post-build to notify the user whenever build fails (as well as when it succeeds).
