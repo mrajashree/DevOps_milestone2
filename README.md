@@ -155,7 +155,7 @@ after GIT repo URL.
 
 **SCREENCAST LINK:**
 
-![alt text](./m2.gif "Mov recording")
+https://youtu.be/OvjVBM37BK4
 
 Tool used: QuickTime Player
 ___
