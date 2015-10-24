@@ -49,7 +49,7 @@ Manage Jenkins-> Configure systems -> maven installations -> add â€œmaven 3.0.3â
 ```
 
 Screenshot:
-![alt text](./Base_graph.png "base")
+![alt text](./screenshots/Base_graph.png "base")
 
 
 + Task 2: Advanced Testing Technique: Using Randoop
